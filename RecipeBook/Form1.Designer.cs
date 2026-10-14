@@ -230,6 +230,7 @@
             btnPckRecipe.TabIndex = 18;
             btnPckRecipe.Text = "Pick Recipe";
             btnPckRecipe.UseVisualStyleBackColor = true;
+            btnPckRecipe.Click += btnPckRecipe_Click;
             // 
             // pictureBox1
             // 

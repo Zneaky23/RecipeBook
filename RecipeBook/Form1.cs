@@ -148,5 +148,19 @@ namespace RecipeBook
             txtbxDirections.Clear();
             lstbxRecipes.ClearSelected(); //clears the text boxes, combo box, and list box when the "Clear" button is clicked
         }
+
+        private void btnPckRecipe_Click(object sender, EventArgs e)
+        {
+            if (recipes.Count > 0) //selects a random recipe from the list of recipes and displays the details of the recipe in the text boxes and combo box when the "Pick Recipe" button is clicked
+            {
+                Random random = new Random();
+                int index = random.Next(recipes.Count);
+                lstbxRecipes.SelectedIndex = index;
+            }
+            else
+            {
+                MessageBox.Show("No recipes available to pick.");
+            }
+        }
     }
 }
