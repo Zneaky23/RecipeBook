@@ -55,32 +55,7 @@ namespace RecipeBook
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMinutes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblIngrdts_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void lblSlctRcp_Click(object sender, EventArgs e)
-        {
-
-        }
-
+ 
         private void btnAddRecipe_Click(object sender, EventArgs e) //creates a new recipe object and adds it to the list of recipes when the "Add Recipe" button is clicked
         {
             if (txtbxRecipe.Text == "") //if no recipe name is entered, a message box will pop up asking the user to enter a recipe name
@@ -125,6 +100,7 @@ namespace RecipeBook
             {
                 recipes.RemoveAt(index);
                 lstbxRecipes.Items.RemoveAt(index);
+                SaveRecipesToFile(); //saves the recipes to the txt file when a recipe is removed
 
                 txtbxRecipe.Clear();
                 cmbCategory.SelectedIndex = -1;

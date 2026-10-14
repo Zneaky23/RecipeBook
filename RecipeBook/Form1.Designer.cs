@@ -60,7 +60,6 @@
             lblRecipeName.Size = new Size(68, 21);
             lblRecipeName.TabIndex = 0;
             lblRecipeName.Text = "Recipe: ";
-            lblRecipeName.Click += label1_Click;
             // 
             // lblCategory
             // 
@@ -81,7 +80,6 @@
             lblPrpTme.Size = new Size(94, 21);
             lblPrpTme.TabIndex = 2;
             lblPrpTme.Text = "Prep Time: ";
-            lblPrpTme.Click += label3_Click;
             // 
             // lblIngrdts
             // 
@@ -92,7 +90,6 @@
             lblIngrdts.Size = new Size(102, 21);
             lblIngrdts.TabIndex = 4;
             lblIngrdts.Text = "Ingredients: ";
-            lblIngrdts.Click += lblIngrdts_Click;
             // 
             // lblSvRcp
             // 
@@ -113,7 +110,6 @@
             lblSlctRcp.Size = new Size(133, 21);
             lblSlctRcp.TabIndex = 6;
             lblSlctRcp.Text = "Selected Recipe: ";
-            lblSlctRcp.Click += lblSlctRcp_Click;
             // 
             // txtbxRecipe
             // 
@@ -149,7 +145,6 @@
             lblMinutes.Size = new Size(52, 17);
             lblMinutes.TabIndex = 10;
             lblMinutes.Text = "minutes";
-            lblMinutes.Click += lblMinutes_Click;
             // 
             // txtbxIngredients
             // 
