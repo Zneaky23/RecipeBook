@@ -220,6 +220,7 @@
             btnRmvRecipe.TabIndex = 17;
             btnRmvRecipe.Text = "Remove Recipe";
             btnRmvRecipe.UseVisualStyleBackColor = false;
+            btnRmvRecipe.Click += btnRmvRecipe_Click;
             // 
             // btnPckRecipe
             // 

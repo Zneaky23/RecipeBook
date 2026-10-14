@@ -77,6 +77,28 @@ namespace RecipeBook
                 txtbxDirections.Text = selectedRecipe.Instructions;
             }
         }
+
+        private void btnRmvRecipe_Click(object sender, EventArgs e)
+        {
+            int index = lstbxRecipes.SelectedIndex; //removes the selected recipe from the list of recipes and the list box when the "Remove Recipe" button is clicked
+            if (index >= 0)
+            {
+                recipes.RemoveAt(index);
+                lstbxRecipes.Items.RemoveAt(index);
+
+                txtbxRecipe.Clear();
+                cmbCategory.SelectedIndex = -1;
+                txtbxPrpTme.Clear();
+                txtbxIngredients.Clear();
+                txtbxDirections.Clear();
+                MessageBox.Show("Recipe removed successfully!");
+
+            }
+            else
+            {
+                MessageBox.Show("Select a recipe to remove.");
+            }
+        }
     }
 }
     
