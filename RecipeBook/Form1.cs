@@ -1,15 +1,58 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 
 namespace RecipeBook
 {
     public partial class frmRecipeBook : Form
     {
         List<Recipe> recipes = new List<Recipe>();  //creating a list of recipes that will be used to store the recipes that are added to the recipe book
+
+        string fileName = "recipes.txt"; //txt file will be used to store the recipes that are added to the recipe book. The file will be created in the same directory as the executable file.
+
         public frmRecipeBook()
         {
             InitializeComponent();
+            LoadRecipesFromFile(); //loads the recipes from the txt file when the application is opened
+        }
+
+        private void SaveRecipesToFile() //saves the recipes to the txt file when the application is closed
+        {
+            using (StreamWriter writer = new StreamWriter(fileName))
+            {
+                foreach (Recipe recipe in recipes)
+                {
+                    writer.WriteLine(recipe.Name);
+                    writer.WriteLine(recipe.Category);
+                    writer.WriteLine(recipe.PrepTime);
+                    writer.WriteLine(recipe.Ingredients);
+                    writer.WriteLine(recipe.Instructions);
+                    writer.WriteLine("---"); //blank line to separate recipes
+                }
+            }
+        }
+
+        private void LoadRecipesFromFile() //loads the recipes from the txt file when the application is opened
+        {
+            if (File.Exists(fileName))
+            {
+                string[] lines = File.ReadAllLines(fileName);
+
+                for (int i = 0; i < lines.Length; i += 6) //each recipe is separated by a blank line, so the loop increments by 6 to get to the next recipe
+                {
+                    string name = lines[i];
+                    RecipeCategory category = (RecipeCategory)Enum.Parse(typeof(RecipeCategory), lines[i + 1]);
+                    int prepTime = int.Parse(lines[i + 2]);
+                    string ingredients = lines[i + 3];
+                    string instructions = lines[i + 4];
+
+                    Recipe recipe = new Recipe(name, category, prepTime, ingredients, instructions);
+
+                    recipes.Add(recipe);
+                    lstbxRecipes.Items.Add(recipe.Name); //adds the recipe name to the list box
+                }
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -57,6 +100,7 @@ namespace RecipeBook
 
             Recipe recipe = new Recipe(txtbxRecipe.Text, category, prepTime, txtbxIngredients.Text, txtbxDirections.Text); //creates a new recipe object with the values entered in the text boxes and combo box
             recipes.Add(recipe);
+            SaveRecipesToFile(); //saves the recipes to the txt file when a new recipe is added
             lstbxRecipes.Items.Add(recipe.Name);
             MessageBox.Show("Recipe added successfully!");
         }
