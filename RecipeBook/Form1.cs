@@ -32,10 +32,6 @@ namespace RecipeBook
 
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void lblSlctRcp_Click(object sender, EventArgs e)
         {
@@ -99,6 +95,14 @@ namespace RecipeBook
                 MessageBox.Show("Select a recipe to remove.");
             }
         }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtbxRecipe.Clear();
+            cmbCategory.SelectedIndex = -1;
+            txtbxPrpTme.Clear();
+            txtbxIngredients.Clear();
+            txtbxDirections.Clear();
+            lstbxRecipes.ClearSelected(); //clears the text boxes, combo box, and list box when the "Clear" button is clicked
+        }
     }
 }
-    
