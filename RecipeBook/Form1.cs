@@ -26,8 +26,8 @@ namespace RecipeBook
                     writer.WriteLine(recipe.Name);
                     writer.WriteLine(recipe.Category);
                     writer.WriteLine(recipe.PrepTime);
-                    writer.WriteLine(recipe.Ingredients);
-                    writer.WriteLine(recipe.Instructions);
+                    writer.WriteLine(recipe.Ingredients.Replace(Environment.NewLine, "|"));
+                    writer.WriteLine(recipe.Instructions.Replace(Environment.NewLine, "|"));
                     writer.WriteLine("---"); //blank line to separate recipes
                 }
             }
@@ -44,8 +44,8 @@ namespace RecipeBook
                     string name = lines[i];
                     RecipeCategory category = (RecipeCategory)Enum.Parse(typeof(RecipeCategory), lines[i + 1]);
                     int prepTime = int.Parse(lines[i + 2]);
-                    string ingredients = lines[i + 3];
-                    string instructions = lines[i + 4];
+                    string ingredients = lines[i + 3].Replace("|", Environment.NewLine);
+                    string instructions = lines[i + 4].Replace("|", Environment.NewLine);
 
                     Recipe recipe = new Recipe(name, category, prepTime, ingredients, instructions);
 
